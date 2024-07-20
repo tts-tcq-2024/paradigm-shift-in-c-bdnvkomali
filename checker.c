@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <stdbool.h>
 
 int temperature_check(float temperature) { 
     return (temperature >= 0 && temperature <= 45);
@@ -14,13 +15,13 @@ int charge_rate_check(float chargeRate) {
 }
 int battery_check(float temperature, float soc, float chargeRate){
     if (temperature_check(temperature) && soc_check(soc) && charge_rate_check(chargeRate))
-    return 1;
+   printf("Battery is okay\n");
   else 
-   return 0;
+   printf("Battery is Not  okay\n");
     }
 int main() {
-  assert(batteryIsOk(25, 70, 0.7) == 1);
-  assert(batteryIsOk(50, 85, 0) == 0);
+  assert(battery_check(25, 70, 0.7) == true);
+  assert(battery_check(50, 85, 0) == false);
 
   
 }
